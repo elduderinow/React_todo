@@ -1,16 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+$basecolor : #2953d5;
+$baseLighter : #c5e6ff;
+$touchColor : #f66623;
+$touchColorDarker : #d7581c;
+
+$white: white;
+$black:black;
 
 body {
   background-color: white;
   color: #494949;
-  font-family: avenir;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
-text-align: center;
-  margin:0 auto;
-  font-family: avenir;
-  padding:10px 0;
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 0;
 }
 
 .navbar {
@@ -22,7 +29,8 @@ text-align: center;
   .new-item {
 
     input {
-      width:200px !important;
+      width: 200px !important;
+
       &:hover, &:focus {
         width: 200px !important;
       }
@@ -30,32 +38,34 @@ text-align: center;
   }
 }
 
-.new-item{
-  background-color: #0f4b3c;
+.new-item {
+  background-color: $basecolor;
+
   h1 {
     text-align: left;
-    float:left;
-    color:white;
+    float: left;
+    color: $white;
     font-size: 30px;
   }
 
   form {
-    float:right;
+    float: right;
     margin-top: 8px;
   }
 
 
   input {
-    height:40px;
-    border-radius:20px;
-    border:none;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
     text-align: center;
-    background-color: #93cdbe;
-    width:200px;
+    background-color: $baseLighter;
+    width: 200px;
     transition: width 0.4s;
+    color:$basecolor;
 
     &::placeholder {
-      color: #3a6d5f;
+      color: $basecolor;
     }
 
     &:hover, &:focus {
@@ -64,110 +74,123 @@ text-align: center;
   }
 
   button {
-    height:40px;
-    background-color: #f66623;
-    color:white;
-    border-radius:20px;
-    border:none;
+    height: 40px;
+    background-color: $touchColor;
+    color: $white;
+    border-radius: 20px;
+    border: none;
     transform: translatey(-1px);
     width: 80px;
 
     &:hover {
-      background-color: #d2581f;
-      color:white;
+      background-color: $touchColorDarker;
+      color: $white;
+    }
   }
-}
 
 }
 
 .todolist {
+
   margin-top: 20px;
-  padding:20px;
-  h5 {
-    font-weight: bold;
-    font-size: 16px;
-    border-bottom: 1px solid #e7e7e7;
-    padding-bottom: 10px;
-    span {
-      color: #6d6d6d;
-      font-weight: normal;
+  padding: 20px;
+
+  .wrapper {
+    padding: 40px 20px 10px 20px;
+    border-radius:10px;
+
+    h5 {
+      font-weight: bold;
+      font-size: 16px;
+      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: 10px;
+      color:$basecolor;
+
+      span {
+        color: #6d6d6d;
+        font-weight: normal;
+      }
     }
-  }
-  ul {
-    padding:0;
-    li {
-      list-style-type: none;
-      padding:15px 10px;
-      margin:10px 0;
-      border-radius: 5px;
-      background-color: #f8f8f8;
-      text-transform: capitalize;
 
-      &:hover {
-        text-decoration: line-through;
-      }
+    ul {
 
-      input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-      }
+      padding: 0;
 
-      .container {
-        display: block;
-        position: relative;
-        padding-left: 20px;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        margin:0;
+      li {
+        list-style-type: none;
+        padding: 15px 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        background-color: #f8f8f8;
+        text-transform: capitalize;
 
-        input ~ .checkmark {
-          width: 12px;
-          height: 12px;
-          border-radius: 10px;
-          margin-top: 5px;
-          background-color: #f8f8f8;
-          border:1px solid #a8a8a8;
-
+        &:hover {
+          text-decoration: line-through;
         }
 
-        &:hover input ~ .checkmark {
-          background-color: #f66623;
-          border:none;
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
         }
 
-        input:checked ~ .checkmark {
-          background-color: #44af58;
-          border:none;
+        .container {
+          display: block;
+          position: relative;
+          padding-left: 20px;
+          cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          margin: 0;
 
-          &:hover {
-            background-color: #2b7d3b;
+          input ~ .checkmark {
+            width: 12px;
+            height: 12px;
+            border-radius: 10px;
+            margin-top: 5px;
+            background-color: #f8f8f8;
+            border: 1px solid #a8a8a8;
+
+          }
+
+          &:hover input ~ .checkmark {
+            background-color: $touchColor;
+            border: none;
+          }
+
+          input:checked ~ .checkmark {
+            background-color: #44af58;
+            border: none;
+
+            &:hover {
+              background-color: #2b7d3b;
+            }
+          }
+
+          .checkmark:after {
+            content: "";
+            position: absolute;
+            display: block;
           }
         }
 
-        .checkmark:after {
-          content: "";
+
+        .checkmark {
           position: absolute;
-          display: block;
+          top: 0;
+          left: 0;
+          height: 25px;
+          width: 25px;
+          background-color: #cecece;
         }
+
       }
-
-
-      .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 25px;
-        width: 25px;
-        background-color: #cecece;
-      }
-
     }
   }
+
 
 }

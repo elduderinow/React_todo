@@ -7,7 +7,7 @@ const localStorageKey="";
 function Main() {
     // -> object destructuring:
     // useState Hook:  first input is an array of all the elements, the second input is a function to set a new 'state' for the first input , the last input is the default state
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState([{id:1, name:"Make The Dopest Album", checked:false},{id:2, name:"Learn kung fu", checked:false},{id:3, name:"Start to code", checked:true}])
 
     // the useRef is a hook function to get a value from an input field.
     const inputItem = useRef();
@@ -49,8 +49,8 @@ function Main() {
                 <div className="new-item col-12 text-center p-3">
                     <h1>Recollect</h1>
                     <form>
-                        <input placeholder={"Add new Todo"} ref={inputItem} id="add-todo"/>
-                        <button onClick={addTodo} id="add-submit" type="button" className={"mx-3 btn"}>Add</button>
+                        <input className={"shadow-sm"} placeholder={"Add new Todo"} ref={inputItem} id="add-todo"/>
+                        <button onClick={addTodo} id="add-submit" type="button" className={"mx-3 btn shadow-sm"}>Add</button>
                     </form>
                 </div>
                 <TodoList toggleTodo={toggleTodo} title={"To Do"} todos={todos.filter(todos => !todos.checked)}/>

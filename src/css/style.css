@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Merienda&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 body {
   background-color: white;
   color: #494949;
-  font-family: avenir;
+  font-family: "Open Sans", sans-serif;
 }
 
 h1 {
   text-align: center;
   margin: 0 auto;
-  font-family: avenir;
+  font-family: "Open Sans", sans-serif;
   padding: 10px 0;
 }
 
@@ -26,7 +26,7 @@ h1 {
   }
 }
 .new-item {
-  background-color: #0f4b3c;
+  background-color: #2953d5;
 }
 .new-item h1 {
   text-align: left;
@@ -43,12 +43,13 @@ h1 {
   border-radius: 20px;
   border: none;
   text-align: center;
-  background-color: #93cdbe;
+  background-color: #c5e6ff;
   width: 200px;
   transition: width 0.4s;
+  color: #2953d5;
 }
 .new-item input::placeholder {
-  color: #3a6d5f;
+  color: #2953d5;
 }
 .new-item input:hover, .new-item input:focus {
   width: 400px;
@@ -63,7 +64,7 @@ h1 {
   width: 80px;
 }
 .new-item button:hover {
-  background-color: #d2581f;
+  background-color: #d7581c;
   color: white;
 }
 
@@ -71,20 +72,25 @@ h1 {
   margin-top: 20px;
   padding: 20px;
 }
-.todolist h5 {
+.todolist .wrapper {
+  padding: 40px 20px 10px 20px;
+  border-radius: 10px;
+}
+.todolist .wrapper h5 {
   font-weight: bold;
   font-size: 16px;
   border-bottom: 1px solid #e7e7e7;
   padding-bottom: 10px;
+  color: #2953d5;
 }
-.todolist h5 span {
+.todolist .wrapper h5 span {
   color: #6d6d6d;
   font-weight: normal;
 }
-.todolist ul {
+.todolist .wrapper ul {
   padding: 0;
 }
-.todolist ul li {
+.todolist .wrapper ul li {
   list-style-type: none;
   padding: 15px 10px;
   margin: 10px 0;
@@ -92,17 +98,17 @@ h1 {
   background-color: #f8f8f8;
   text-transform: capitalize;
 }
-.todolist ul li:hover {
+.todolist .wrapper ul li:hover {
   text-decoration: line-through;
 }
-.todolist ul li input {
+.todolist .wrapper ul li input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 }
-.todolist ul li .container {
+.todolist .wrapper ul li .container {
   display: block;
   position: relative;
   padding-left: 20px;
@@ -113,7 +119,7 @@ h1 {
   user-select: none;
   margin: 0;
 }
-.todolist ul li .container input ~ .checkmark {
+.todolist .wrapper ul li .container input ~ .checkmark {
   width: 12px;
   height: 12px;
   border-radius: 10px;
@@ -121,23 +127,23 @@ h1 {
   background-color: #f8f8f8;
   border: 1px solid #a8a8a8;
 }
-.todolist ul li .container:hover input ~ .checkmark {
+.todolist .wrapper ul li .container:hover input ~ .checkmark {
   background-color: #f66623;
   border: none;
 }
-.todolist ul li .container input:checked ~ .checkmark {
+.todolist .wrapper ul li .container input:checked ~ .checkmark {
   background-color: #44af58;
   border: none;
 }
-.todolist ul li .container input:checked ~ .checkmark:hover {
+.todolist .wrapper ul li .container input:checked ~ .checkmark:hover {
   background-color: #2b7d3b;
 }
-.todolist ul li .container .checkmark:after {
+.todolist .wrapper ul li .container .checkmark:after {
   content: "";
   position: absolute;
   display: block;
 }
-.todolist ul li .checkmark {
+.todolist .wrapper ul li .checkmark {
   position: absolute;
   top: 0;
   left: 0;
