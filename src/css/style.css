@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Merienda&display=swap");
 h1 {
-  background-color: red;
+  text-align: center;
+  margin: 0 auto;
+  font-family: "Merienda", cursive;
 }
 
 .todolist {
