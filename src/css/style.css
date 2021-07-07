@@ -1,0 +1,28 @@
+h1 {
+  background-color: red;
+}
+
+.todolist {
+  margin-top: 20px;
+}
+.todolist ul {
+  padding: 0;
+}
+.todolist ul li {
+  list-style-type: none;
+  padding: 10px;
+}
+.todolist ul li:nth-child(odd) {
+  background-color: #e7e7e7;
+}
+.todolist ul li:nth-child(even) {
+  background-color: #f3f3f3;
+}
+.todolist ul li:first-child {
+  border-radius: 5px 5px 0 0;
+}
+.todolist ul li:last-child {
+  border-radius: 0 0 5px 5px;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,31 @@
+h1 {
+  background-color: red;
+}
+
+.todolist {
+  margin-top: 20px;
+  ul {
+    padding:0;
+    li {
+      list-style-type: none;
+      padding:10px;
+
+      &:nth-child(odd) {
+        background-color: #e7e7e7;
+      }
+
+      &:nth-child(even) {
+        background-color: #f3f3f3;
+      }
+
+      &:first-child{
+        border-radius: 5px 5px 0 0;
+      }
+
+      &:last-child{
+        border-radius:0 0 5px 5px;
+      }
+    }
+  }
+
+}
