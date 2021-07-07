@@ -9,7 +9,6 @@ function Nav() {
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon">&nbsp;</span>
                 </button>
-
             </div>
         </nav>
     );

@@ -1,34 +1,172 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 
+body {
+  background-color: white;
+  color: #494949;
+  font-family: avenir;
+}
+
 h1 {
 text-align: center;
   margin:0 auto;
-  font-family: 'Merienda', cursive;
+  font-family: avenir;
+  padding:10px 0;
+}
+
+.navbar {
+  background-color: #08261f !important;
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .new-item {
+
+    input {
+      width:200px !important;
+      &:hover, &:focus {
+        width: 200px !important;
+      }
+    }
+  }
+}
+
+.new-item{
+  background-color: #0f4b3c;
+  h1 {
+    text-align: left;
+    float:left;
+    color:white;
+    font-size: 30px;
+  }
+
+  form {
+    float:right;
+    margin-top: 8px;
+  }
+
+
+  input {
+    height:40px;
+    border-radius:20px;
+    border:none;
+    text-align: center;
+    background-color: #93cdbe;
+    width:200px;
+    transition: width 0.4s;
+
+    &::placeholder {
+      color: #3a6d5f;
+    }
+
+    &:hover, &:focus {
+      width: 400px;
+    }
+  }
+
+  button {
+    height:40px;
+    background-color: #f66623;
+    color:white;
+    border-radius:20px;
+    border:none;
+    transform: translatey(-1px);
+    width: 80px;
+
+    &:hover {
+      background-color: #d2581f;
+      color:white;
+  }
+}
+
 }
 
 .todolist {
   margin-top: 20px;
+  padding:20px;
+  h5 {
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px solid #e7e7e7;
+    padding-bottom: 10px;
+    span {
+      color: #6d6d6d;
+      font-weight: normal;
+    }
+  }
   ul {
     padding:0;
     li {
       list-style-type: none;
-      padding:10px;
+      padding:15px 10px;
+      margin:10px 0;
+      border-radius: 5px;
+      background-color: #f8f8f8;
+      text-transform: capitalize;
 
-      &:nth-child(odd) {
-        background-color: #e7e7e7;
+      &:hover {
+        text-decoration: line-through;
       }
 
-      &:nth-child(even) {
-        background-color: #f3f3f3;
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
       }
 
-      &:first-child{
-        border-radius: 5px 5px 0 0;
+      .container {
+        display: block;
+        position: relative;
+        padding-left: 20px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin:0;
+
+        input ~ .checkmark {
+          width: 12px;
+          height: 12px;
+          border-radius: 10px;
+          margin-top: 5px;
+          background-color: #f8f8f8;
+          border:1px solid #a8a8a8;
+
+        }
+
+        &:hover input ~ .checkmark {
+          background-color: #f66623;
+          border:none;
+        }
+
+        input:checked ~ .checkmark {
+          background-color: #44af58;
+          border:none;
+
+          &:hover {
+            background-color: #2b7d3b;
+          }
+        }
+
+        .checkmark:after {
+          content: "";
+          position: absolute;
+          display: block;
+        }
       }
 
-      &:last-child{
-        border-radius:0 0 5px 5px;
+
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #cecece;
       }
+
     }
   }
 

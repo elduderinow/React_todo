@@ -1,28 +1,44 @@
 import React, {useRef, useState, useEffect} from 'react';
 import TodoList from "./main/TodoList";
+import { v4 as uuidv4 } from 'uuid';
 
-const LOCAL_STORAGE_KEY = 'todo.key'
+const localStorageKey="";
 
 function Main() {
-
+    // -> object destructuring:
+    // useState Hook:  first input is an array of all the elements, the second input is a function to set a new 'state' for the first input , the last input is the default state
     const [todos, setTodos] = useState([])
+
+    // the useRef is a hook function to get a value from an input field.
     const inputItem = useRef();
 
 
-    useEffect(()=>{
-        const storeditems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+    //this hook is used to load the localstorage saved earlier and convert it back from a string to an object in an array
+    useEffect(()=> {
+        const storeditems = JSON.parse(localStorage.getItem(localStorageKey))
         if (storeditems) setTodos(storeditems)
     }, [])
 
+    //this hook is used to store information to the localStorage. it is called everytime something changes in the dependency, in this case our todo array.
+    //save is by using .setitem and give a value what it must save. in this case it is array, but it can store only strings, so we need to parse with the stringify function.
+    //it also needs a variable to store the information inside, hence the first parameter 'localStorageKey'
     useEffect(()=>{
-        localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(todos) )
-    }, [todos])
+        localStorage.setItem(localStorageKey,JSON.stringify(todos) )
+    }, [todos]) // <- this here.
+
+
+    function toggleTodo(id) {
+        const todoList = [...todos]
+        const todo = todoList.find(todo => todo.id === id)
+        todo.checked = !todo.checked
+        setTodos(todoList)
+    }
 
     function addTodo(){
         const name = inputItem.current.value
         if (name === '') return
-        setTodos(prevTodos => {
-            return [...prevTodos, name]
+        setTodos(todos => {
+            return [...todos, {id:uuidv4(), name:name, checked:false}]
         })
         inputItem.current.value = null
     }
@@ -30,16 +46,15 @@ function Main() {
     return (
         <div className="container-fluid ">
             <div className="row">
-                <div className="col-12 text-center p-3 bg-primary ">
+                <div className="new-item col-12 text-center p-3">
+                    <h1>Recollect</h1>
                     <form>
-                        <input ref={inputItem} id="add-todo"/>
-                        <button onClick={addTodo} id="add-submit" type="button" className={"mx-3 btn btn-success"}>Add to Do</button>
+                        <input placeholder={"Add new Todo"} ref={inputItem} id="add-todo"/>
+                        <button onClick={addTodo} id="add-submit" type="button" className={"mx-3 btn"}>Add</button>
                     </form>
                 </div>
-                <TodoList title={"To Do"} todos={todos}/>
-                <TodoList checked={"checked"} title={"Complete"} todos={todos}/>
-                <p>{todos.length} tasks left to do</p>
-
+                <TodoList toggleTodo={toggleTodo} title={"To Do"} todos={todos.filter(todos => !todos.checked)}/>
+                <TodoList toggleTodo={toggleTodo} title={"Completed"} todos={todos.filter(todos => todos.checked)}/>
             </div>
         </div>
     );
