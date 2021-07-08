@@ -1,5 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import TodoList from "./main/TodoList";
+import AddTodo from "./main/AddTodo";
 import { v4 as uuidv4 } from 'uuid';
 
 const localStorageKey="";
@@ -7,7 +8,7 @@ const localStorageKey="";
 function Main() {
     // -> object destructuring:
     // useState Hook:  first input is an array of all the elements, the second input is a function to set a new 'state' for the first input , the last input is the default state
-    const [todos, setTodos] = useState([{id:1, name:"Make The Dopest Album", checked:false},{id:2, name:"Learn kung fu", checked:false},{id:3, name:"Start to code", checked:true}])
+    const [todos, setTodos] = useState([{id:1, name:"Make The Dopest Album", checked:false},{id:2, name:"fix life problems", checked:false},{id:3, name:"Start to code", checked:true}])
 
     // the useRef is a hook function to get a value from an input field.
     const inputItem = useRef();
@@ -34,6 +35,25 @@ function Main() {
         setTodos(todoList)
     }
 
+    function deleteItem(id) {
+        const deleteItem = [...todos]
+        const todo = deleteItem.findIndex(todo => todo.id === id)
+        deleteItem.splice(todo, 1)
+        setTodos(deleteItem)
+    }
+
+    function clearList(title) {
+        const clearList = [...todos]
+        let todo = clearList.filter(elem => elem.checked === true)
+        if (title === "Completed") {
+            let filtered = clearList.filter(elem => !todo.includes(elem))
+            setTodos(filtered)
+        } else {
+            let filtered = clearList.filter(elem => todo.includes(elem))
+            setTodos(filtered)
+        }
+    }
+
     function addTodo(){
         const name = inputItem.current.value
         if (name === '') return
@@ -46,15 +66,9 @@ function Main() {
     return (
         <div className="container-fluid ">
             <div className="row">
-                <div className="new-item col-12 text-center p-3">
-                    <h1>Recollect</h1>
-                    <form>
-                        <input className={"shadow-sm"} placeholder={"Add new Todo"} ref={inputItem} id="add-todo"/>
-                        <button onClick={addTodo} id="add-submit" type="button" className={"mx-3 btn shadow-sm"}>Add</button>
-                    </form>
-                </div>
-                <TodoList toggleTodo={toggleTodo} title={"To Do"} todos={todos.filter(todos => !todos.checked)}/>
-                <TodoList toggleTodo={toggleTodo} title={"Completed"} todos={todos.filter(todos => todos.checked)}/>
+                <AddTodo addTodo={addTodo} inputItem={inputItem}  />
+                <TodoList clearList={clearList} deleteItem={deleteItem} toggleTodo={toggleTodo} title={"To Do"} todos={todos.filter(todos => !todos.checked)}/>
+                <TodoList clearList={clearList} deleteItem={deleteItem} toggleTodo={toggleTodo} title={"Completed"} todos={todos.filter(todos => todos.checked)}/>
             </div>
         </div>
     );

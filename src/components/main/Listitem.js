@@ -1,20 +1,26 @@
 import React from 'react';
 
-function ListItem(props) {
-    let itemArr = props.item.map(function (elem) {
+function ListItem({toggleTodo, item, deleteItem}) {
 
-        function handleToggle() {
-            props.toggleTodo(elem.id)
-        }
+    function handleToggle() {
+        toggleTodo(item.id)
+    }
 
-        return <li key={elem.id}><label className="container"><input onChange={handleToggle} checked={elem.checked === true} type={"checkbox"}/> {elem.name} <span className="checkmark"></span></label></li>
-    })
-
+    function handleDelete(){
+        deleteItem(item.id)
+    }
 
     return (
-        <>
-            {itemArr}
-        </>
+            <li key={item.id}>
+                <label className="container">
+                    <input onChange={handleToggle} checked={item.checked === true} type={"checkbox"}/> {item.name}
+                    <span className="checkmark"></span>
+                </label>
+
+                <label onClick={handleDelete} className="close">
+                    <i className="close-icon fas fa-times"></i>
+                </label>
+            </li>
     );
 }
 
