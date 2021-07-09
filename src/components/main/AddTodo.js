@@ -11,7 +11,7 @@ function AddTodo({inputItem, addTodo}) {
             <h1>Recollect</h1>
             <form>
                 <input className={"shadow-sm"} placeholder={"Add new Todo"} onKeyDown={handleKeyDown} ref={inputItem} id="add-todo"/>
-                <button onClick={addTodo} id="add-submit" type="button" className={" btn shadow-sm"}>Add</button>
+                <button onClick={addTodo} id="add-submit" type="button" className={"btn shadow-sm"}>Add</button>
             </form>
         </div>
     )

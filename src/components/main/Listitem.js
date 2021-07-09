@@ -11,15 +11,15 @@ function ListItem({toggleTodo, item, deleteItem}) {
     }
 
     return (
-            <li key={item.id}>
+            <li draggable={"true"} key={item.id}>
                 <label className="container">
                     <input onChange={handleToggle} checked={item.checked === true} type={"checkbox"}/> {item.name}
                     <span className="checkmark"></span>
                 </label>
-
                 <label onClick={handleDelete} className="close">
                     <i className="close-icon fas fa-times"></i>
                 </label>
+                <div className={"date"}>{item.date}</div>
             </li>
     );
 }

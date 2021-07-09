@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-$basecolor : #2953d5;
-$baseLighter : lighten($basecolor, 20%);
-$baseDarker : darken($basecolor, 20%);
-$touchColor : #34bf77;
-$touchLighter : lighten($touchColor, 40%);
-$touchDarker : darken($touchColor, 10%);
 
+$basecolor: #2953d5;
+$baseLighter: lighten($basecolor, 20%);
+$baseDarker: darken($basecolor, 20%);
+$touchColor: #34bf77;
+$touchLighter: lighten($touchColor, 40%);
+$touchDarker: darken($touchColor, 10%);
 
 
 $white: white;
-$black:black;
+$black: black;
 
 body {
   background-color: white;
@@ -29,29 +29,17 @@ h1 {
   display: none;
 }
 
-@media only screen and (max-width: 600px) {
-  .new-item {
-
-    input {
-      width: 200px !important;
-
-      &:hover, &:focus {
-        width: 200px !important;
-      }
-    }
-  }
-}
 
 .new-item {
   background-color: $basecolor;
-  padding:5px 11px;
+  padding: 5px 11px;
 
   h1 {
     text-align: left;
     float: left;
     color: $white;
     font-size: 30px;
-    margin-left:8px;
+    margin-left: 8px;
   }
 
   form {
@@ -68,7 +56,7 @@ h1 {
     background-color: $baseLighter;
     width: 200px;
     transition: width 0.4s;
-    color:$baseDarker;
+    color: $baseDarker;
 
     &::placeholder {
       color: $baseDarker;
@@ -88,8 +76,8 @@ h1 {
     border: none;
     transform: translatey(-1px);
     width: 80px;
-    margin-left:16px;
-    margin-right:8px;
+    margin-left: 16px;
+    margin-right: 8px;
 
     &:hover {
       background-color: $touchDarker;
@@ -99,6 +87,7 @@ h1 {
 
 }
 
+
 .todolist {
 
   margin-top: 20px;
@@ -106,29 +95,29 @@ h1 {
 
   .wrapper {
     padding: 40px 20px 10px 20px;
-    border-radius:10px;
+    border-radius: 10px;
 
     h5 {
       font-weight: bold;
       font-size: 16px;
       border-bottom: 2px solid #f5f5f5;
       padding-bottom: 8px;
-      color:$basecolor;
+      color: $basecolor;
 
       span.count {
-        margin-left: 5px ;
+        margin-left: 5px;
         color: #aaaaaa;
         font-weight: normal;
       }
 
       span.clear {
         transform: translateY(-4px);
-        float:right;
+        float: right;
         background-color: $baseLighter;
-        padding:5px 12px;
+        padding: 5px 12px;
         border-radius: 30px;
-        color:$white;
-        transition:0.2s;
+        color: $white;
+        transition: 0.2s;
         font-size: 14px;
         font-weight: normal;
 
@@ -151,8 +140,10 @@ h1 {
         background-color: #f8f8f8;
         text-transform: capitalize;
 
-        &:hover {
-          text-decoration: line-through;
+        .date {
+          font-size: small;
+          padding-left: 20px;
+          color: #b4b4b4;
         }
 
         input {
@@ -161,6 +152,7 @@ h1 {
           cursor: pointer;
           height: 0;
           width: 0;
+
         }
 
         .container {
@@ -219,19 +211,44 @@ h1 {
           float: right;
 
           .close-icon {
-            color:$baseLighter;
+            color: $baseLighter;
             transition: 0.2s;
-            transform: scale(1,1) rotate(0deg);
+            transform: scale(1, 1) rotate(0deg);
+
             &:hover {
-              transform: scale(1.2,1.2) rotate(90deg);
-              color:$baseDarker;
+              transform: scale(1.2, 1.2) rotate(90deg);
+              color: $baseDarker;
             }
           }
         }
-
       }
     }
   }
+}
 
+@media only screen and (max-width: 768px) {
+  .new-item {
+    h1 {
+      float: none;
+      text-align: center;
+    }
 
+    form {
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+
+      &:hover, &:focus {
+        width: 100%;
+      }
+    }
+
+    button {
+      display: none;
+    }
+  }
 }

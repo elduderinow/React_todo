@@ -17,14 +17,6 @@ h1 {
   display: none;
 }
 
-@media only screen and (max-width: 600px) {
-  .new-item input {
-    width: 200px !important;
-  }
-  .new-item input:hover, .new-item input:focus {
-    width: 200px !important;
-  }
-}
 .new-item {
   background-color: #2953d5;
   padding: 5px 11px;
@@ -118,8 +110,10 @@ h1 {
   background-color: #f8f8f8;
   text-transform: capitalize;
 }
-.todolist .wrapper ul li:hover {
-  text-decoration: line-through;
+.todolist .wrapper ul li .date {
+  font-size: small;
+  padding-left: 20px;
+  color: #b4b4b4;
 }
 .todolist .wrapper ul li input {
   position: absolute;
@@ -183,6 +177,27 @@ h1 {
 .todolist .wrapper ul li .close .close-icon:hover {
   transform: scale(1.2, 1.2) rotate(90deg);
   color: #19327f;
+}
+
+@media only screen and (max-width: 768px) {
+  .new-item h1 {
+    float: none;
+    text-align: center;
+  }
+  .new-item form {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+  .new-item input {
+    width: 100%;
+  }
+  .new-item input:hover, .new-item input:focus {
+    width: 100%;
+  }
+  .new-item button {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

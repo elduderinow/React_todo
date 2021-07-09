@@ -4,11 +4,14 @@ import AddTodo from "./main/AddTodo";
 import { v4 as uuidv4 } from 'uuid';
 
 const localStorageKey="";
+const date = new Date();
+const [month, day, year, hour, minutes] = [date.getMonth(), date.getDate(), date.getFullYear(), date.getHours(), date.getMinutes()];
+
 
 function Main() {
     // -> object destructuring:
     // useState Hook:  first input is an array of all the elements, the second input is a function to set a new 'state' for the first input , the last input is the default state
-    const [todos, setTodos] = useState([{id:1, name:"Make The Dopest Album", checked:false},{id:2, name:"fix life problems", checked:false},{id:3, name:"Start to code", checked:true}])
+    const [todos, setTodos] = useState([{id:1, name:"Seal magna carta", checked:false, date:"1215-6-15 04:20"},{id:2, name:"fix life problems", checked:false, date:"1963-8-22 12:30"},{id:3, name:"Start to code", checked:true, date:"2021-4-6 09:00"}])
 
     // the useRef is a hook function to get a value from an input field.
     const inputItem = useRef();
@@ -54,11 +57,13 @@ function Main() {
         }
     }
 
+
     function addTodo(){
+        let itemDate = year +"-"+ month+"-"+day+" "+hour+":"+minutes
         const name = inputItem.current.value
         if (name === '') return
         setTodos(todos => {
-            return [...todos, {id:uuidv4(), name:name, checked:false}]
+            return [...todos, {id:uuidv4(), name:name, checked:false, date:itemDate}]
         })
         inputItem.current.value = null
     }
