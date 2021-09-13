@@ -3,7 +3,8 @@
 ## Practical Information
 
 * Repository: `React_todo`
-* Link: https://elduderinow.github.io/React_todo/
+* Demo: http://recollect.yarrut.com/
+* Languages & Frameworks: React, JS, HTML, SCSS, BOOTSTRAP
 
 ## What is the React todo app?
 A nice and tidy todo app.
